@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ceremonial Tea Name Generator · เครื่องสุ่มชื่อชาเขียวเกรดพิธีการ</title>
+<meta name="description" content="สุ่มชื่อชาเขียวเกรดพิธีการแบบเท่ๆ เบียวๆ พร้อมชื่อไทยและเกรดพิธีการ">
+<style>
+  :root{
+    --bg:#0a0f0c;
+    --bg2:#101712;
+    --card:#141d17;
+    --gold:#d4b46a;
+    --gold-dim:#8a7540;
+    --jade:#6fcf97;
+    --jade-deep:#2f6b4f;
+    --text:#eef3ee;
+    --text-dim:#9bab9f;
+    --text-faint:#5d6e62;
+    --danger:#e07a5a;
+    --border:rgba(212,180,106,0.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Thai",Roboto,sans-serif;
+    background:radial-gradient(120% 80% at 50% 0%, var(--bg2) 0%, var(--bg) 60%);
+    color:var(--text);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px 18px;
+    overflow-x:hidden;
+  }
+  .wrap{width:100%;max-width:440px;}
+  .eyebrow{
+    text-align:center;
+    font-size:12px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--gold-dim);
+    margin-bottom:18px;
+  }
+  .eyebrow i{color:var(--gold);}
+  .stage{
+    background:linear-gradient(160deg, var(--card) 0%, #0e1611 100%);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:40px 24px 34px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 0 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(212,180,106,0.08);
+  }
+  .stage::before{
+    content:"";
+    position:absolute;
+    top:-50%;left:-50%;
+    width:200%;height:200%;
+    background:conic-gradient(from 0deg, transparent 0deg, rgba(212,180,106,0.06) 40deg, transparent 80deg, transparent 360deg);
+    animation:spin 14s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .label-grade{
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--jade-deep);
+    margin-bottom:20px;
+    position:relative;
+    color:var(--text-faint);
+  }
+  .name-en{
+    font-size:27px;
+    font-weight:700;
+    line-height:1.3;
+    letter-spacing:0.5px;
+    background:linear-gradient(100deg, #f5e6b8 10%, var(--gold) 45%, #f5e6b8 80%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    min-height:72px;
+    display:flex;align-items:center;justify-content:center;
+    padding:0 4px;
+    position:relative;
+  }
+  .name-th{
+    font-size:19px;
+    font-weight:600;
+    color:var(--jade);
+    margin-top:12px;
+    line-height:1.45;
+    padding:0 4px;
+    position:relative;
+  }
+  .rank{
+    display:inline-block;
+    margin-top:18px;
+    font-size:12.5px;
+    color:var(--gold);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:5px 16px;
+    letter-spacing:0.5px;
+    position:relative;
+    background:rgba(212,180,106,0.05);
+  }
+  /* reveal animations */
+  .reveal{animation:rise .55s cubic-bezier(.2,.7,.2,1) both;}
+  @keyframes rise{
+    from{opacity:0;transform:translateY(14px) scale(.97);filter:blur(6px);}
+    to{opacity:1;transform:none;filter:blur(0);}
+  }
+  .flash{animation:flash .7s ease both;}
+  @keyframes flash{
+    0%{opacity:0;letter-spacing:8px;}
+    40%{opacity:1;}
+    100%{opacity:1;letter-spacing:0.5px;}
+  }
+  .pulse{animation:pulse .5s ease both;}
+  @keyframes pulse{
+    0%{opacity:0;transform:scale(.8);}
+    60%{transform:scale(1.06);}
+    100%{opacity:1;transform:scale(1);}
+  }
+  .btn-main{
+    width:100%;
+    margin-top:22px;
+    padding:17px;
+    font-size:17px;
+    font-weight:700;
+    font-family:inherit;
+    color:#1a130a;
+    background:linear-gradient(100deg, var(--gold) 0%, #e9d191 50%, var(--gold) 100%);
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    letter-spacing:1px;
+    transition:transform .12s ease, box-shadow .2s ease;
+    box-shadow:0 6px 24px rgba(212,180,106,0.25);
+  }
+  .btn-main:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(212,180,106,0.4);}
+  .btn-main:active{transform:scale(.98);}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;}
+  .btn-img{
+    width:100%;
+    margin-top:11px;
+    padding:14px;
+    font-size:15px;
+  }
+  .btn{
+    padding:12px;
+    font-size:14px;
+    font-family:inherit;
+    font-weight:600;
+    color:var(--text-dim);
+    background:transparent;
+    border:1px solid var(--border);
+    border-radius:12px;
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .btn:hover{color:var(--text);border-color:rgba(212,180,106,0.4);background:rgba(212,180,106,0.05);}
+  .btn:active{transform:scale(.98);}
+  .btn.on{color:#1a130a;background:var(--danger);border-color:var(--danger);}
+  .log{margin-top:24px;display:flex;flex-direction:column;gap:7px;}
+  .log-item{
+    font-size:13px;
+    color:var(--text-dim);
+    padding:9px 13px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.05);
+    border-radius:10px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    animation:rise .35s ease both;
+  }
+  .foot{
+    text-align:center;
+    margin-top:26px;
+    font-size:11px;
+    color:var(--text-faint);
+    letter-spacing:1px;
+  }
+  .foot i{color:var(--gold-dim);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow"><i>✦</i> ceremonial grade tea <i>✦</i></div>
+
+  <div class="stage">
+    <div class="label-grade">— สุ่มชื่อชาเขียวเกรดพิธีการ —</div>
+    <div class="name-en" id="nameEn">Super Ceremonial Matcha</div>
+    <div class="name-th" id="nameTh">「มัทฉะแห่งสุพรรณ」</div>
+    <div><span class="rank" id="rank">เกรดพิธีการขั้นพื้นฐาน</span></div>
+  </div>
+
+  <button class="btn-main" id="gen">✦ อัญเชิญชื่อใหม่ ✦</button>
+  <button class="btn btn-img" id="copyImg">🖼 คัดลอกภาพ</button>
+  <div class="row">
+    <button class="btn" id="copy">⧉ คัดลอก</button>
+    <button class="btn" id="chaos">🔥 โหมดเบียวสุด</button>
+  </div>
+
+  <div class="log" id="log"></div>
+
+  <div class="foot"><i>※</i> brewed with ceremonial intent</div>
+</div>
+
+<script>
+(function(){
+  var prefixEn = ["Super","Ultra","Hyper","Mega","Grand","Divine","Eternal","Imperial","Sacred","Supreme","Forbidden","Ancient","Cosmic","Infinite","Phantom","Crimson","Golden","Mythic","Legendary","Celestial","Abyssal","Astral","Twilight","Royal","Primordial","Transcendent","Omega","Apex","Ethereal","Boundless"];
+  var coreEn = ["Matcha","Sencha","Gyokuro","Jade Essence","Emerald Dew","Tea of the Void","Verdant Soul","Green Spirit","Dragonwell","Zen Nectar","Hojicha","Kabusecha","Chlorophyll Edge","Bamboo Whisper","Mist of Uji","Leaf of Heaven","Eternal Steep","Emerald Tempest","Jade Serpent","Whisked Oblivion"];
+  var midOptions = ["Ceremonial","Imperial","Ritual","Sacred Rite","Premium Grade"];
+
+  var prefixTh = ["สุดยอด","มหา","อภิมหา","ศักดิ์สิทธิ์","ต้องห้าม","อมตะ","พิฆาต","ลี้ลับ","ราชันย์","นิรันดร์","เหนือมนุษย์","อสูร","สุริยะ"];
+  var coreTh = ["มัทฉะ","ชาเขียว","เกียวคุโระ","เซนฉะ","น้ำค้างหยก","วิญญาณใบชา","ลมหายใจไผ่","ชาแห่งความว่างเปล่า","หยดมรกต","จิตวิญญาณเซน"];
+  var placeTh = ["แห่งสุพรรณ","แห่งอุจิ","แห่งดอยสูง","แห่งวัดร้าง","แห่งภูเขาต้องห้าม","แห่งสายหมอก","แห่งกาลเวลา","แห่งเงาจันทร์","ที่หายสาบสูญ","แห่งเซียนชา","ที่ปลุกมังกรในใจ"];
+  var chaosTh = ["ที่ดื่มแล้วบรรลุธรรม","ที่ทำลายถ้วยชาแห่งโชคชะตา","ที่มนุษย์ไม่ควรลิ้มลอง","ที่ปลุกพลังนิทราพันปี","ที่ฉีกฟ้าทะลุนรก","แห่งการเก็บเกี่ยวครั้งสุดท้าย","ที่อูมามิไร้ขอบเขต"];
+  var ranks = ["เกรดพิธีการขั้นพื้นฐาน","เกรดพิธีการต้องห้าม","เกรดพิธีการระดับเทพ","เกรดพิธีการแห่งจักรวาล","เกรดพิธีการที่หายสาบสูญ","เกรดพิธีการขั้นสูงสุด","เกรดพิธีการแห่งตำนาน","เกรดพิธีการที่มนุษย์ไม่ควรดื่ม","เกรดพิธีการที่จักรพรรดิหวงห้าม","เกรดพิธีการสงวนไว้สำหรับเทพเจ้า","เกรดพิธีการเหนือกาลเวลา","เกรดพิธีการที่ผนึกด้วยเวทมนตร์","เกรดพิธีการแห่งสำนักลับ","เกรดพิธีการที่ดื่มได้ครั้งเดียวในชีวิต","เกรดพิธีการขั้นบรรลุนิพพาน","เกรดพิธีการที่สั่นสะเทือนสามโลก","เกรดพิธีการต้นตำรับพันปี","เกรดพิธีการที่หยุดยั้งวันสิ้นโลก","เกรดพิธีการแห่งราชวงศ์ที่ล่มสลาย","เกรดพิธีการที่มังกรเฝ้าหวง"];
+
+  var nameEnEl = document.getElementById("nameEn");
+  var nameThEl = document.getElementById("nameTh");
+  var rankEl = document.getElementById("rank");
+  var logEl = document.getElementById("log");
+  var chaosMode = false;
+  var pick = function(a){ return a[Math.floor(Math.random()*a.length)]; };
+
+  function reflow(el){ void el.offsetWidth; }
+
+  function gen(){
+    var en = pick(prefixEn) + " " + pick(midOptions) + " " + pick(coreEn);
+    var th = pick(prefixTh) + pick(coreTh) + pick(placeTh);
+    if(chaosMode){ th += pick(chaosTh); }
+    var rk = pick(ranks);
+
+    nameEnEl.textContent = en;
+    nameThEl.textContent = "「" + th + "」";
+    rankEl.textContent = rk;
+
+    nameEnEl.classList.remove("flash"); reflow(nameEnEl); nameEnEl.classList.add("flash");
+    nameThEl.classList.remove("reveal"); reflow(nameThEl); nameThEl.classList.add("reveal"); nameThEl.style.animationDelay=".12s";
+    rankEl.classList.remove("pulse"); reflow(rankEl); rankEl.classList.add("pulse"); rankEl.style.animationDelay=".28s";
+
+    var item = document.createElement("div");
+    item.className = "log-item";
+    item.textContent = en + " 「" + th + "」";
+    logEl.insertBefore(item, logEl.firstChild);
+    while(logEl.children.length > 5){ logEl.removeChild(logEl.lastChild); }
+  }
+
+  document.getElementById("gen").addEventListener("click", gen);
+  document.getElementById("copy").addEventListener("click", function(){
+    var btn = this;
+    var txt = nameEnEl.textContent + "\n" + nameThEl.textContent + "\n" + rankEl.textContent;
+    navigator.clipboard.writeText(txt).then(function(){
+      btn.textContent = "✓ คัดลอกแล้ว";
+      setTimeout(function(){ btn.textContent = "⧉ คัดลอก"; }, 1200);
+    });
+  });
+  document.getElementById("chaos").addEventListener("click", function(){
+    chaosMode = !chaosMode;
+    this.classList.toggle("on", chaosMode);
+    this.textContent = chaosMode ? "🔥 เบียวสุด: เปิด" : "🔥 โหมดเบียวสุด";
+    gen();
+  });
+
+  // ---- คัดลอกภาพ : render ลง canvas ขนาดคงที่ 800x600 ----
+  function wrapText(ctx, text, maxWidth){
+    var words = text.split(" ");
+    var lines = [], line = "";
+    for(var i=0;i<words.length;i++){
+      var test = line ? line + " " + words[i] : words[i];
+      if(ctx.measureText(test).width > maxWidth && line){
+        lines.push(line); line = words[i];
+      } else { line = test; }
+    }
+    if(line) lines.push(line);
+    return lines;
+  }
+
+  function renderCanvas(){
+    var W = 800, H = 600;
+    var c = document.createElement("canvas");
+    c.width = W; c.height = H;
+    var ctx = c.getContext("2d");
+
+    // พื้นหลังไล่เฉด
+    var bg = ctx.createRadialGradient(W/2, 0, 80, W/2, 0, H*1.1);
+    bg.addColorStop(0, "#101712");
+    bg.addColorStop(1, "#0a0f0c");
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,W,H);
+
+    // กรอบทอง
+    ctx.strokeStyle = "rgba(212,180,106,0.35)";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(28,28,W-56,H-56);
+    ctx.strokeStyle = "rgba(212,180,106,0.15)";
+    ctx.strokeRect(40,40,W-80,H-80);
+
+    ctx.textAlign = "center";
+
+    // eyebrow
+    ctx.fillStyle = "#8a7540";
+    ctx.font = "600 18px 'Noto Sans Thai', sans-serif";
+    ctx.fillText("✦  CEREMONIAL GRADE TEA  ✦", W/2, 110);
+
+    // label
+    ctx.fillStyle = "#5d6e62";
+    ctx.font = "400 18px 'Noto Sans Thai', sans-serif";
+    ctx.fillText("— ชาเขียวเกรดพิธีการ —", W/2, 160);
+
+    // ชื่ออังกฤษ (ทอง, wrap ได้)
+    ctx.fillStyle = "#e9d191";
+    ctx.font = "700 46px 'Noto Sans Thai', sans-serif";
+    var enLines = wrapText(ctx, nameEnEl.textContent, W-140);
+    var enY = 250;
+    enLines.forEach(function(l){ ctx.fillText(l, W/2, enY); enY += 56; });
+
+    // ชื่อไทย (เขียวหยก, wrap ได้)
+    ctx.fillStyle = "#6fcf97";
+    ctx.font = "600 34px 'Noto Sans Thai', sans-serif";
+    var thLines = wrapText(ctx, nameThEl.textContent, W-160);
+    var thY = enY + 30;
+    thLines.forEach(function(l){ ctx.fillText(l, W/2, thY); thY += 44; });
+
+    // เกรด (pill ทอง)
+    ctx.font = "500 22px 'Noto Sans Thai', sans-serif";
+    var rk = rankEl.textContent;
+    var rkW = ctx.measureText(rk).width + 50;
+    var rkX = W/2 - rkW/2, rkY = Math.min(thY + 30, H-90), rkH = 46;
+    ctx.fillStyle = "rgba(212,180,106,0.08)";
+    ctx.strokeStyle = "rgba(212,180,106,0.35)";
+    ctx.lineWidth = 1.5;
+    if(ctx.roundRect){ ctx.beginPath(); ctx.roundRect(rkX, rkY, rkW, rkH, 23); ctx.fill(); ctx.stroke(); }
+    else { ctx.fillRect(rkX, rkY, rkW, rkH); ctx.strokeRect(rkX, rkY, rkW, rkH); }
+    ctx.fillStyle = "#d4b46a";
+    ctx.fillText(rk, W/2, rkY + 31);
+
+    // footer
+    ctx.fillStyle = "#5d6e62";
+    ctx.font = "400 15px 'Noto Sans Thai', sans-serif";
+    ctx.fillText("ceremonial.narze.live", W/2, H-50);
+
+    return c;
+  }
+
+  document.getElementById("copyImg").addEventListener("click", function(){
+    var btn = this;
+    var orig = btn.textContent;
+    var canvas = renderCanvas();
+    canvas.toBlob(function(blob){
+      if(!blob){ btn.textContent = "✗ ไม่สำเร็จ"; setTimeout(function(){btn.textContent=orig;},1400); return; }
+      if(navigator.clipboard && window.ClipboardItem){
+        navigator.clipboard.write([new ClipboardItem({"image/png": blob})]).then(function(){
+          btn.textContent = "✓ คัดลอกภาพแล้ว";
+          setTimeout(function(){ btn.textContent = orig; }, 1400);
+        }).catch(function(){
+          downloadBlob(blob); btn.textContent = "✓ บันทึกภาพแล้ว";
+          setTimeout(function(){ btn.textContent = orig; }, 1400);
+        });
+      } else {
+        downloadBlob(blob); btn.textContent = "✓ บันทึกภาพแล้ว";
+        setTimeout(function(){ btn.textContent = orig; }, 1400);
+      }
+    }, "image/png");
+  });
+
+  function downloadBlob(blob){
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = "ceremonial-tea.png";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  gen();
+})();
+</script>
+</body>
+</html>
