@@ -146,7 +146,6 @@
   .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;}
   .btn-img{
     width:100%;
-    margin-top:11px;
     padding:14px;
     font-size:15px;
   }
@@ -200,7 +199,10 @@
   </div>
 
   <button class="btn-main" id="gen">✦ อัญเชิญชื่อใหม่ ✦</button>
-  <button class="btn btn-img" id="copyImg">🖼 คัดลอกภาพ</button>
+  <div class="row">
+    <button class="btn btn-img" id="copyImg">🖼 คัดลอกภาพ</button>
+    <button class="btn btn-img" id="speak">🔊 อ่าน</button>
+  </div>
   <div class="row">
     <button class="btn" id="copy">⧉ คัดลอก</button>
     <button class="btn" id="chaos">🔥 โหมดเบียวสุด</button>
@@ -233,6 +235,10 @@
   function reflow(el){ void el.offsetWidth; }
 
   function gen(){
+    if("speechSynthesis" in window && window.speechSynthesis.speaking){
+      window.speechSynthesis.cancel();
+      resetSpeakBtn();
+    }
     var en = pick(prefixEn) + " " + pick(midOptions) + " " + pick(coreEn);
     var th = pick(prefixTh) + pick(coreTh) + pick(placeTh);
     if(chaosMode){ th += pick(chaosTh); }
@@ -262,6 +268,43 @@
       setTimeout(function(){ btn.textContent = "⧉ คัดลอก"; }, 1200);
     });
   });
+  // ---- อ่านออกเสียง (TTS) : อังกฤษก่อน แล้วต่อด้วยไทย+เกรด ----
+  var speakBtn = document.getElementById("speak");
+  function resetSpeakBtn(){
+    speakBtn.textContent = "🔊 อ่าน";
+    speakBtn.classList.remove("on");
+  }
+  speakBtn.addEventListener("click", function(){
+    if(!("speechSynthesis" in window)){
+      speakBtn.textContent = "✗ ไม่รองรับ";
+      setTimeout(resetSpeakBtn, 1400);
+      return;
+    }
+    var synth = window.speechSynthesis;
+    if(synth.speaking || synth.pending){
+      synth.cancel();
+      resetSpeakBtn();
+      return;
+    }
+    function stopAll(){ synth.cancel(); resetSpeakBtn(); }
+
+    var en = new SpeechSynthesisUtterance(nameEnEl.textContent);
+    en.lang = "en-US";
+    en.rate = 0.95;
+    en.onerror = stopAll;
+
+    var th = new SpeechSynthesisUtterance(nameThEl.textContent.replace(/[「」]/g,"") + " " + rankEl.textContent);
+    th.lang = "th-TH";
+    th.rate = 0.95;
+    th.onend = resetSpeakBtn;
+    th.onerror = stopAll;
+
+    speakBtn.textContent = "⏹ หยุดอ่าน";
+    speakBtn.classList.add("on");
+    synth.speak(en);
+    synth.speak(th);
+  });
+
   document.getElementById("chaos").addEventListener("click", function(){
     chaosMode = !chaosMode;
     this.classList.toggle("on", chaosMode);
