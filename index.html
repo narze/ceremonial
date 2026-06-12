@@ -280,7 +280,19 @@
       } else { line = test; }
     }
     if(line) lines.push(line);
-    return lines;
+    // Break any line still too wide (e.g. Thai text with no spaces)
+    var result = [];
+    for(var j=0;j<lines.length;j++){
+      if(ctx.measureText(lines[j]).width <= maxWidth){ result.push(lines[j]); continue; }
+      var charLine = "";
+      for(var ci=0;ci<lines[j].length;ci++){
+        var tc = charLine + lines[j][ci];
+        if(ctx.measureText(tc).width > maxWidth && charLine){ result.push(charLine); charLine = lines[j][ci]; }
+        else { charLine = tc; }
+      }
+      if(charLine) result.push(charLine);
+    }
+    return result;
   }
 
   function renderCanvas(){
