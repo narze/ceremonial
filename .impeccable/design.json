@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-13T00:00:00Z",
+  "title": "Design System: Ceremonial Tea Name Generator",
+  "extensions": {
+    "colorMeta": {
+      "gold": { "role": "primary", "displayName": "Ceremonial Gold", "canonical": "#e0bd6f", "tonalRamp": ["oklch(20% 0.04 85)", "oklch(32% 0.06 85)", "oklch(44% 0.07 85)", "oklch(56% 0.08 85)", "oklch(66% 0.09 85)", "oklch(78% 0.09 85)", "oklch(87% 0.07 85)", "oklch(95% 0.03 85)"] },
+      "gold-dim": { "role": "primary", "displayName": "Gold Dim", "canonical": "#ab8e50", "tonalRamp": ["oklch(20% 0.04 85)", "oklch(30% 0.05 85)", "oklch(40% 0.06 85)", "oklch(50% 0.07 85)", "oklch(58% 0.07 85)", "oklch(68% 0.06 85)", "oklch(80% 0.04 85)", "oklch(92% 0.02 85)"] },
+      "jade": { "role": "secondary", "displayName": "Jade Spirit", "canonical": "#7fd3a0", "tonalRamp": ["oklch(22% 0.05 155)", "oklch(34% 0.07 155)", "oklch(46% 0.09 155)", "oklch(58% 0.11 155)", "oklch(68% 0.13 155)", "oklch(78% 0.13 155)", "oklch(87% 0.09 155)", "oklch(95% 0.04 155)"] },
+      "jade-deep": { "role": "secondary", "displayName": "Jade Deep", "canonical": "#356f53", "tonalRamp": ["oklch(18% 0.04 158)", "oklch(28% 0.06 158)", "oklch(38% 0.08 158)", "oklch(48% 0.09 158)", "oklch(58% 0.10 158)", "oklch(70% 0.10 158)", "oklch(82% 0.07 158)", "oklch(93% 0.03 158)"] },
+      "danger": { "role": "tertiary", "displayName": "Chaos Terracotta", "canonical": "#e07a5a", "tonalRamp": ["oklch(24% 0.06 40)", "oklch(36% 0.09 40)", "oklch(48% 0.11 40)", "oklch(58% 0.13 40)", "oklch(67% 0.13 40)", "oklch(76% 0.11 40)", "oklch(86% 0.07 40)", "oklch(94% 0.03 40)"] },
+      "bg": { "role": "neutral", "displayName": "Scroll Dark", "canonical": "#0b0d08", "tonalRamp": ["oklch(14% 0.01 160)", "oklch(20% 0.012 160)", "oklch(28% 0.014 160)", "oklch(40% 0.016 160)", "oklch(54% 0.014 160)", "oklch(68% 0.012 160)", "oklch(82% 0.008 160)", "oklch(95% 0.004 160)"] },
+      "card": { "role": "neutral", "displayName": "Panel Lacquer", "canonical": "#191b12", "tonalRamp": ["oklch(16% 0.014 158)", "oklch(22% 0.016 158)", "oklch(30% 0.018 158)", "oklch(42% 0.018 158)", "oklch(56% 0.016 158)", "oklch(70% 0.012 158)", "oklch(84% 0.008 158)", "oklch(95% 0.004 158)"] },
+      "text": { "role": "neutral", "displayName": "Ink White", "canonical": "#f1efe6", "tonalRamp": ["oklch(20% 0.006 158)", "oklch(32% 0.006 158)", "oklch(44% 0.006 158)", "oklch(56% 0.006 158)", "oklch(68% 0.006 158)", "oklch(80% 0.006 158)", "oklch(90% 0.005 158)", "oklch(96% 0.004 158)"] },
+      "text-dim": { "role": "neutral", "displayName": "Ink Muted", "canonical": "#a8a596", "tonalRamp": ["oklch(24% 0.008 158)", "oklch(36% 0.01 158)", "oklch(48% 0.012 158)", "oklch(58% 0.012 158)", "oklch(70% 0.012 158)", "oklch(80% 0.01 158)", "oklch(89% 0.007 158)", "oklch(96% 0.004 158)"] },
+      "text-faint": { "role": "neutral", "displayName": "Ink Faint", "canonical": "#6b6757", "tonalRamp": ["oklch(20% 0.008 158)", "oklch(30% 0.01 158)", "oklch(40% 0.012 158)", "oklch(50% 0.012 158)", "oklch(60% 0.012 158)", "oklch(72% 0.01 158)", "oklch(84% 0.007 158)", "oklch(94% 0.004 158)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The solid honey-gold English ceremonial title (name-en) with a warm text-shadow glow. The loudest element on the stage." },
+      "headline": { "displayName": "Headline", "purpose": "The jade Thai name (name-th) wrapped in Japanese brackets. Emotional center for the Thai-first audience." },
+      "body": { "displayName": "Body", "purpose": "Ghost-button labels and history-log entries." },
+      "label": { "displayName": "Label", "purpose": "Uppercase wide-tracked eyebrow and grade sub-label only." }
+    },
+    "shadows": [
+      { "name": "ambient-stage", "value": "0 18px 50px rgba(0,0,0,0.45), 0 0 90px rgba(196,142,72,0.12), inset 0 1px 0 rgba(224,189,111,0.10)", "purpose": "The stage panel: a soft shadow grounds it, a warm amber halo makes it glow, and the inset gold hairline is the lit-from-within highlight." },
+      { "name": "gold-lift-rest", "value": "0 6px 24px rgba(224,189,111,0.25)", "purpose": "Primary summon button at rest: a warm gold glow beneath it." },
+      { "name": "gold-lift-hover", "value": "0 8px 30px rgba(224,189,111,0.4)", "purpose": "Primary button on hover: glow intensified as the button rises." }
+    ],
+    "motion": [
+      { "name": "spin", "value": "spin 14s linear infinite", "purpose": "Slow conic-gradient glint rotating behind the stage content." },
+      { "name": "rise", "value": "rise .55s cubic-bezier(.2,.7,.2,1) both", "purpose": "Thai name and log entries enter, blurring up from below." },
+      { "name": "flash", "value": "flash .7s ease both", "purpose": "English title enters, letter-spacing collapsing from 8px." },
+      { "name": "pulse", "value": "pulse .5s ease both", "purpose": "Rank pill enters last, scaling up with a soft overshoot." },
+      { "name": "btn-press", "value": "transform .12s ease, box-shadow .2s ease", "purpose": "Primary button lift-and-glow on hover, press-in on active." }
+    ],
+    "breakpoints": [
+      { "name": "wrap-max", "value": "440px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Summon)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The dominant action: summon a new ceremonial name. Gold-gradient fill, lifts and glows on interaction.",
+      "html": "<button class=\"ds-btn-primary\">✦ อัญเชิญชื่อใหม่ ✦</button>",
+      "css": ".ds-btn-primary { width: 100%; padding: 17px; font-size: 17px; font-weight: 700; font-family: 'Noto Sans Thai', -apple-system, sans-serif; color: #1a130a; background: linear-gradient(100deg, #e0bd6f 0%, #f1da9e 50%, #e0bd6f 100%); border: none; border-radius: 14px; cursor: pointer; letter-spacing: 1px; box-shadow: 0 6px 24px rgba(224,189,111,0.25); transition: transform .12s ease, box-shadow .2s ease; } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(224,189,111,0.4); } .ds-btn-primary:focus-visible { outline: 2px solid #f1efe6; outline-offset: 3px; } .ds-btn-primary:active { transform: scale(.98); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary actions (copy, read aloud, copy image). Transparent with a gold-translucent hairline border.",
+      "html": "<button class=\"ds-btn-ghost\">⧉ คัดลอก</button>",
+      "css": ".ds-btn-ghost { padding: 12px; font-size: 14px; font-weight: 600; font-family: 'Noto Sans Thai', -apple-system, sans-serif; color: #a8a596; background: transparent; border: 1px solid rgba(224,189,111,0.18); border-radius: 12px; cursor: pointer; transition: all .15s ease; } .ds-btn-ghost:hover { color: #f1efe6; border-color: rgba(224,189,111,0.4); background: rgba(224,189,111,0.05); } .ds-btn-ghost:focus-visible { outline: 2px solid #e0bd6f; outline-offset: 2px; } .ds-btn-ghost:active { transform: scale(.98); }"
+    },
+    {
+      "name": "Chaos Toggle (active)",
+      "kind": "button",
+      "refersTo": "button-ghost-active",
+      "description": "The 'เบียวสุด' (max-chuunibyou) toggle in its on state: the lone terracotta fill in the whole system.",
+      "html": "<button class=\"ds-btn-chaos-on\">🔥 เบียวสุด: เปิด</button>",
+      "css": ".ds-btn-chaos-on { padding: 12px; font-size: 14px; font-weight: 600; font-family: 'Noto Sans Thai', -apple-system, sans-serif; color: #1a130a; background: #e07a5a; border: 1px solid #e07a5a; border-radius: 12px; cursor: pointer; transition: all .15s ease; } .ds-btn-chaos-on:focus-visible { outline: 2px solid #f1efe6; outline-offset: 2px; } .ds-btn-chaos-on:active { transform: scale(.98); }"
+    },
+    {
+      "name": "Rank Pill",
+      "kind": "chip",
+      "refersTo": "chip-rank",
+      "description": "Display-only pill stating the absurd ceremonial grade.",
+      "html": "<span class=\"ds-rank\">เกรดพิธีการระดับเทพ</span>",
+      "css": ".ds-rank { display: inline-block; font-size: 12.5px; color: #e0bd6f; border: 1px solid rgba(224,189,111,0.18); border-radius: 999px; padding: 5px 16px; letter-spacing: 0.5px; background: rgba(224,189,111,0.05); font-family: 'Noto Sans Thai', -apple-system, sans-serif; }"
+    },
+    {
+      "name": "Summoning Stage",
+      "kind": "card",
+      "refersTo": "card-stage",
+      "description": "The centerpiece lacquer panel that proclaims the name. Gold title, jade Thai name, gold rank pill, ambient glow.",
+      "html": "<div class=\"ds-stage\"><div class=\"ds-stage-label\">— สุ่มชื่อชาเขียวเกรดพิธีการ —</div><div class=\"ds-stage-en\">Forbidden Imperial Ceremonial Jade Phoenix</div><div class=\"ds-stage-th\">「มัทฉะแห่งสุพรรณ」</div><div><span class=\"ds-rank\">เกรดพิธีการระดับเทพ</span></div></div>",
+      "css": ".ds-stage { background: linear-gradient(160deg, #191b12 0%, #11130c 100%); border: 1px solid rgba(224,189,111,0.18); border-radius: 24px; padding: 40px 24px 34px; text-align: center; box-shadow: 0 18px 50px rgba(0,0,0,0.45), 0 0 90px rgba(196,142,72,0.12), inset 0 1px 0 rgba(224,189,111,0.10); font-family: 'Noto Sans Thai', -apple-system, sans-serif; max-width: 440px; } .ds-stage-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #6b6757; margin-bottom: 20px; } .ds-stage-en { font-size: 27px; font-weight: 700; line-height: 1.3; letter-spacing: 0.5px; color: #eccf85; text-shadow: 0 0 22px rgba(224,189,111,0.28); } .ds-stage-th { font-size: 19px; font-weight: 600; color: #7fd3a0; margin-top: 12px; line-height: 1.45; } .ds-rank { display: inline-block; margin-top: 18px; font-size: 12.5px; color: #e0bd6f; border: 1px solid rgba(224,189,111,0.18); border-radius: 999px; padding: 5px 16px; letter-spacing: 0.5px; background: rgba(224,189,111,0.05); }"
+    },
+    {
+      "name": "History Log Item",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "A single truncated entry in the recent-names log. Near-invisible tint, newest on top, capped at 5.",
+      "html": "<div class=\"ds-log-item\">Forbidden Imperial Ceremonial Jade Phoenix 「มัทฉะแห่งสุพรรณ」</div>",
+      "css": ".ds-log-item { font-size: 13px; color: #a8a596; padding: 9px 13px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 440px; font-family: 'Noto Sans Thai', -apple-system, sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Forbidden Tea Scroll",
+    "overview": "The interface is a single dark-lacquer panel that behaves like an ancient ceremonial scroll, lit by warm candlelight: honey-gold leaf, soft matcha-jade ink, and a slow rotating glint of light. It exists to deliver one joke with total sincerity: a user taps a button and the scroll solemnly proclaims an absurdly grandiose green-tea name, its Thai twin in brackets, and a deadpan 'ceremonial grade' rank. The humor lives in the gap between ridiculous content and reverent presentation. This is a toy, not a tool: Thai-first, near-zero density, mobile-first, and built so the result looks good the instant it is screenshotted. Surfaces feel lit-from-within and a little expensive, but interaction is toy-like and bouncy, never corporate. It rejects the generic SaaS dashboard, English-first layout, cold minimalism, and anything mean or grim. The 'เบียวสุด' chaos toggle is opt-in spice signaled by the lone terracotta accent, not the resting mood.",
+    "keyCharacteristics": [
+      "Warm dark canvas with honey-gold-leaf and matcha-jade-ink accents; candlelit, not flat.",
+      "Thai-first chrome; the solid honey-gold English title is decorative.",
+      "One dominant action (summon a new name) that must feel instant and re-spinnable.",
+      "Output optimized to be screenshotted: the live stage and the 800x600 share-card are designed in parallel.",
+      "Playful, lifted interaction over a precious, ceremonial surface."
+    ],
+    "rules": [
+      { "name": "The Duotone Rule", "body": "The system speaks in gold and jade only. Terracotta is the single exception and is forbidden anywhere except the active chaos toggle. If something needs emphasis, reach for gold, scale, or glow, never a new color.", "section": "colors" },
+      { "name": "The No-Faint-Body Rule", "body": "Ink Faint (#6b6757) is decorative, not for reading. Permitted on the grade sub-label and footer only. Never set body copy or button labels in it; its contrast on the lacquer ground is borderline.", "section": "colors" },
+      { "name": "The One-Family Rule", "body": "Noto Sans Thai carries the entire system. Do not add a second display typeface to elevate the ceremony; elevation comes from the gold gradient, weight, and spacing.", "section": "typography" },
+      { "name": "The Uppercase-Label-Only Rule", "body": "ALL CAPS and wide letter-spacing are reserved for the two short labels (eyebrow, grade). Never set Thai content or any sentence in uppercase.", "section": "typography" },
+      { "name": "The Lit-From-Within Rule", "body": "Depth comes from glow (ambient halos, inset highlights, gold blooms), never from hard grey drop-shadows. If a surface looks like it has a 2014-app gray box-shadow, it is wrong.", "section": "elevation" },
+      { "name": "The Lift-On-Touch Rule", "body": "Interactive elements are playful: they rise and brighten on hover and press in on active. Static, dead-on-click controls break the toy feel.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the interface Thai-first. Chrome, controls, and the rank are Thai; the solid honey-gold English title is decorative flourish that serves the joke.",
+      "Do present absurd names with sincere, ceremonial polish. The deadpan gap between silly content and reverent gold-and-jade presentation is the humor.",
+      "Do keep depth glow-lit: ambient halos, inset gold highlights, warm blooms. Lift and brighten interactive elements on hover; press them in on active.",
+      "Do design the share-card (800x600 canvas) in lockstep with the live stage. Every output is built to be screenshotted and posted.",
+      "Do stagger the reveal (flash title, then rise Thai name, then pulse rank). The choreography sells the proclamation.",
+      "Do reserve uppercase plus wide tracking for the two short labels only (eyebrow, grade).",
+      "Do add a prefers-reduced-motion fallback. The 14s conic spin and the entrance choreography both need a calm alternative, and reveals must enhance an already-visible default."
+    ],
+    "donts": [
+      "Don't turn this into generic SaaS or a dashboard: no card grids, no settings-panel chrome, no tiny uppercase eyebrow kicker stamped above every section.",
+      "Don't make it English-first or English-only. Thai is the primary language.",
+      "Don't let the chuunibyou energy go mean, cynical, or grim. The 'เบียวสุด' mode is camp and lovable; warm beats cool.",
+      "Don't strip it into cold, sterile minimalism. The ceremonial richness and warmth are the soul.",
+      "Don't introduce a fourth hue. Gold and jade only; terracotta is the lone exception, allowed solely on the active chaos toggle.",
+      "Don't set readable text in Ink Faint (#6b6757); readable secondary text uses Ink Muted (#a8a596).",
+      "Don't gradient-clip the title (background-clip:text over a gradient); use a solid Title Gold with a warm text-shadow glow.",
+      "Don't add a second display typeface. Noto Sans Thai carries the whole system through weight and treatment."
+    ]
+  }
+}

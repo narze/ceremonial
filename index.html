@@ -5,26 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ceremonial Tea Name Generator · เครื่องสุ่มชื่อชาเขียวเกรดพิธีการ</title>
 <meta name="description" content="สุ่มชื่อชาเขียวเกรดพิธีการแบบเท่ๆ เบียวๆ พร้อมชื่อไทยและเกรดพิธีการ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0f0c;
-    --bg2:#101712;
-    --card:#141d17;
-    --gold:#d4b46a;
-    --gold-dim:#8a7540;
-    --jade:#6fcf97;
-    --jade-deep:#2f6b4f;
-    --text:#eef3ee;
-    --text-dim:#9bab9f;
-    --text-faint:#5d6e62;
+    --bg:#0b0d08;
+    --bg2:#15160f;
+    --card:#191b12;
+    --gold:#e0bd6f;
+    --gold-dim:#ab8e50;
+    --jade:#7fd3a0;
+    --jade-deep:#356f53;
+    --text:#f1efe6;
+    --text-dim:#a8a596;
+    --text-faint:#6b6757;
     --danger:#e07a5a;
-    --border:rgba(212,180,106,0.18);
+    --border:rgba(224,189,111,0.18);
+    --title-gold:#eccf85;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html,body{height:100%;}
   body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Thai",Roboto,sans-serif;
-    background:radial-gradient(120% 80% at 50% 0%, var(--bg2) 0%, var(--bg) 60%);
+    font-family:"Noto Sans Thai",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:
+      radial-gradient(90% 60% at 50% -8%, rgba(196,142,72,0.13) 0%, transparent 60%),
+      radial-gradient(120% 80% at 50% 0%, var(--bg2) 0%, var(--bg) 60%);
+    background-attachment:fixed;
     color:var(--text);
     min-height:100vh;
     display:flex;
@@ -44,21 +51,21 @@
   }
   .eyebrow i{color:var(--gold);}
   .stage{
-    background:linear-gradient(160deg, var(--card) 0%, #0e1611 100%);
+    background:linear-gradient(160deg, var(--card) 0%, #11130c 100%);
     border:1px solid var(--border);
-    border-radius:20px;
+    border-radius:24px;
     padding:40px 24px 34px;
     text-align:center;
     position:relative;
     overflow:hidden;
-    box-shadow:0 0 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(212,180,106,0.08);
+    box-shadow:0 18px 50px rgba(0,0,0,0.45), 0 0 90px rgba(196,142,72,0.12), inset 0 1px 0 rgba(224,189,111,0.10);
   }
   .stage::before{
     content:"";
     position:absolute;
     top:-50%;left:-50%;
     width:200%;height:200%;
-    background:conic-gradient(from 0deg, transparent 0deg, rgba(212,180,106,0.06) 40deg, transparent 80deg, transparent 360deg);
+    background:conic-gradient(from 0deg, transparent 0deg, rgba(224,189,111,0.08) 40deg, transparent 80deg, transparent 360deg);
     animation:spin 14s linear infinite;
     pointer-events:none;
   }
@@ -67,24 +74,23 @@
     font-size:11px;
     letter-spacing:3px;
     text-transform:uppercase;
-    color:var(--jade-deep);
+    color:var(--text-dim);
     margin-bottom:20px;
     position:relative;
-    color:var(--text-faint);
   }
   .name-en{
     font-size:27px;
     font-weight:700;
     line-height:1.3;
     letter-spacing:0.5px;
-    background:linear-gradient(100deg, #f5e6b8 10%, var(--gold) 45%, #f5e6b8 80%);
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
+    color:var(--title-gold);
+    text-shadow:0 0 22px rgba(224,189,111,0.28);
+    text-wrap:balance;
     min-height:72px;
     display:flex;align-items:center;justify-content:center;
     padding:0 4px;
     position:relative;
+    overflow-wrap:anywhere;
   }
   .name-th{
     font-size:19px;
@@ -94,6 +100,9 @@
     line-height:1.45;
     padding:0 4px;
     position:relative;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+    text-wrap:balance;
   }
   .rank{
     display:inline-block;
@@ -105,7 +114,7 @@
     padding:5px 16px;
     letter-spacing:0.5px;
     position:relative;
-    background:rgba(212,180,106,0.05);
+    background:rgba(224,189,111,0.05);
   }
   /* reveal animations */
   .reveal{animation:rise .55s cubic-bezier(.2,.7,.2,1) both;}
@@ -133,16 +142,17 @@
     font-weight:700;
     font-family:inherit;
     color:#1a130a;
-    background:linear-gradient(100deg, var(--gold) 0%, #e9d191 50%, var(--gold) 100%);
+    background:linear-gradient(100deg, var(--gold) 0%, #f1da9e 50%, var(--gold) 100%);
     border:none;
     border-radius:14px;
     cursor:pointer;
     letter-spacing:1px;
     transition:transform .12s ease, box-shadow .2s ease;
-    box-shadow:0 6px 24px rgba(212,180,106,0.25);
+    box-shadow:0 6px 24px rgba(224,189,111,0.25);
   }
-  .btn-main:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(212,180,106,0.4);}
+  .btn-main:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(224,189,111,0.4);}
   .btn-main:active{transform:scale(.98);}
+  .btn-main:focus-visible{outline:2px solid var(--text);outline-offset:3px;}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px;}
   .btn-img{
     width:100%;
@@ -151,6 +161,7 @@
   }
   .btn{
     padding:12px;
+    min-height:44px;
     font-size:14px;
     font-family:inherit;
     font-weight:600;
@@ -161,8 +172,9 @@
     cursor:pointer;
     transition:all .15s ease;
   }
-  .btn:hover{color:var(--text);border-color:rgba(212,180,106,0.4);background:rgba(212,180,106,0.05);}
+  .btn:hover{color:var(--text);border-color:rgba(224,189,111,0.4);background:rgba(224,189,111,0.05);}
   .btn:active{transform:scale(.98);}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
   .btn.on{color:#1a130a;background:var(--danger);border-color:var(--danger);}
   .log{margin-top:24px;display:flex;flex-direction:column;gap:7px;}
   .log-item{
@@ -181,36 +193,45 @@
     text-align:center;
     margin-top:26px;
     font-size:11px;
-    color:var(--text-faint);
+    color:var(--text-dim);
     letter-spacing:1px;
   }
   .foot i{color:var(--gold-dim);}
+  @media (prefers-reduced-motion: reduce){
+    .stage::before{animation:none;}
+    .reveal,.flash,.pulse{animation:none;}
+    .log-item{animation:none;}
+    .btn-main,.btn{transition:none;}
+    .btn-main:hover{transform:none;}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="eyebrow"><i>✦</i> ceremonial grade tea <i>✦</i></div>
+  <h1 class="eyebrow"><i aria-hidden="true">✦</i> ceremonial grade tea <i aria-hidden="true">✦</i></h1>
 
   <div class="stage">
     <div class="label-grade">— สุ่มชื่อชาเขียวเกรดพิธีการ —</div>
-    <div class="name-en" id="nameEn">Super Ceremonial Matcha</div>
-    <div class="name-th" id="nameTh">「มัทฉะแห่งสุพรรณ」</div>
-    <div><span class="rank" id="rank">เกรดพิธีการขั้นพื้นฐาน</span></div>
+    <div class="proclaim" aria-live="polite" aria-atomic="true">
+      <div class="name-en" id="nameEn" lang="en">Super Ceremonial Matcha</div>
+      <div class="name-th" id="nameTh">「มัทฉะแห่งสุพรรณ」</div>
+      <div><span class="rank" id="rank">เกรดพิธีการขั้นพื้นฐาน</span></div>
+    </div>
   </div>
 
-  <button class="btn-main" id="gen">✦ อัญเชิญชื่อใหม่ ✦</button>
+  <button class="btn-main" id="gen" aria-label="อัญเชิญชื่อชาเกรดพิธีการใหม่">✦ อัญเชิญชื่อใหม่ ✦</button>
   <div class="row">
-    <button class="btn btn-img" id="copyImg">🖼 คัดลอกภาพ</button>
-    <button class="btn btn-img" id="speak">🔊 อ่าน</button>
+    <button class="btn btn-img" id="copyImg" aria-label="คัดลอกภาพชื่อชา">🖼 คัดลอกภาพ</button>
+    <button class="btn btn-img" id="speak" aria-label="อ่านชื่อชาออกเสียง" aria-pressed="false">🔊 อ่าน</button>
   </div>
   <div class="row">
-    <button class="btn" id="copy">⧉ คัดลอก</button>
-    <button class="btn" id="chaos">🔥 โหมดเบียวสุด</button>
+    <button class="btn" id="copy" aria-label="คัดลอกชื่อชาเป็นข้อความ">⧉ คัดลอก</button>
+    <button class="btn" id="chaos" aria-label="สลับโหมดเบียวสุด" aria-pressed="false">🔥 โหมดเบียวสุด</button>
   </div>
 
   <div class="log" id="log"></div>
 
-  <div class="foot"><i>※</i> brewed with ceremonial intent</div>
+  <div class="foot"><i aria-hidden="true">※</i> brewed with ceremonial intent</div>
 </div>
 
 <script>
@@ -231,6 +252,16 @@
   var logEl = document.getElementById("log");
   var chaosMode = false;
   var pick = function(a){ return a[Math.floor(Math.random()*a.length)]; };
+
+  // Single source of truth for the share-card palette: read the :root tokens
+  // so a color change in CSS reaches the canvas too.
+  var rootStyle = getComputedStyle(document.documentElement);
+  function tok(n){ return rootStyle.getPropertyValue(n).trim(); }
+  var C = {
+    bg: tok("--bg"), bg2: tok("--bg2"), gold: tok("--gold"),
+    goldDim: tok("--gold-dim"), jade: tok("--jade"), muted: tok("--text-dim")
+  };
+  var GOLD_TITLE = tok("--title-gold"); // solid gold for the canvas title, matched to the live .name-en
 
   function reflow(el){ void el.offsetWidth; }
 
@@ -273,6 +304,7 @@
   function resetSpeakBtn(){
     speakBtn.textContent = "🔊 อ่าน";
     speakBtn.classList.remove("on");
+    speakBtn.setAttribute("aria-pressed", "false");
   }
   speakBtn.addEventListener("click", function(){
     if(!("speechSynthesis" in window)){
@@ -301,6 +333,7 @@
 
     speakBtn.textContent = "⏹ หยุดอ่าน";
     speakBtn.classList.add("on");
+    speakBtn.setAttribute("aria-pressed", "true");
     synth.speak(en);
     synth.speak(th);
   });
@@ -308,6 +341,7 @@
   document.getElementById("chaos").addEventListener("click", function(){
     chaosMode = !chaosMode;
     this.classList.toggle("on", chaosMode);
+    this.setAttribute("aria-pressed", chaosMode ? "true" : "false");
     this.textContent = chaosMode ? "🔥 เบียวสุด: เปิด" : "🔥 โหมดเบียวสุด";
     gen();
   });
@@ -346,39 +380,39 @@
 
     // พื้นหลังไล่เฉด
     var bg = ctx.createRadialGradient(W/2, 0, 80, W/2, 0, H*1.1);
-    bg.addColorStop(0, "#101712");
-    bg.addColorStop(1, "#0a0f0c");
+    bg.addColorStop(0, C.bg2);
+    bg.addColorStop(1, C.bg);
     ctx.fillStyle = bg;
     ctx.fillRect(0,0,W,H);
 
     // กรอบทอง
-    ctx.strokeStyle = "rgba(212,180,106,0.35)";
+    ctx.strokeStyle = "rgba(224,189,111,0.35)";
     ctx.lineWidth = 2;
     ctx.strokeRect(28,28,W-56,H-56);
-    ctx.strokeStyle = "rgba(212,180,106,0.15)";
+    ctx.strokeStyle = "rgba(224,189,111,0.15)";
     ctx.strokeRect(40,40,W-80,H-80);
 
     ctx.textAlign = "center";
 
     // eyebrow
-    ctx.fillStyle = "#8a7540";
+    ctx.fillStyle = C.goldDim;
     ctx.font = "600 18px 'Noto Sans Thai', sans-serif";
     ctx.fillText("✦  CEREMONIAL GRADE TEA  ✦", W/2, 110);
 
     // label
-    ctx.fillStyle = "#5d6e62";
+    ctx.fillStyle = C.muted;
     ctx.font = "400 18px 'Noto Sans Thai', sans-serif";
     ctx.fillText("— ชาเขียวเกรดพิธีการ —", W/2, 160);
 
     // ชื่ออังกฤษ (ทอง, wrap ได้)
-    ctx.fillStyle = "#e9d191";
+    ctx.fillStyle = GOLD_TITLE;
     ctx.font = "700 46px 'Noto Sans Thai', sans-serif";
     var enLines = wrapText(ctx, nameEnEl.textContent, W-140);
     var enY = 250;
     enLines.forEach(function(l){ ctx.fillText(l, W/2, enY); enY += 56; });
 
     // ชื่อไทย (เขียวหยก, wrap ได้)
-    ctx.fillStyle = "#6fcf97";
+    ctx.fillStyle = C.jade;
     ctx.font = "600 34px 'Noto Sans Thai', sans-serif";
     var thLines = wrapText(ctx, nameThEl.textContent, W-160);
     var thY = enY + 30;
@@ -389,16 +423,16 @@
     var rk = rankEl.textContent;
     var rkW = ctx.measureText(rk).width + 50;
     var rkX = W/2 - rkW/2, rkY = Math.min(thY + 30, H-90), rkH = 46;
-    ctx.fillStyle = "rgba(212,180,106,0.08)";
-    ctx.strokeStyle = "rgba(212,180,106,0.35)";
+    ctx.fillStyle = "rgba(224,189,111,0.08)";
+    ctx.strokeStyle = "rgba(224,189,111,0.35)";
     ctx.lineWidth = 1.5;
     if(ctx.roundRect){ ctx.beginPath(); ctx.roundRect(rkX, rkY, rkW, rkH, 23); ctx.fill(); ctx.stroke(); }
     else { ctx.fillRect(rkX, rkY, rkW, rkH); ctx.strokeRect(rkX, rkY, rkW, rkH); }
-    ctx.fillStyle = "#d4b46a";
+    ctx.fillStyle = C.gold;
     ctx.fillText(rk, W/2, rkY + 31);
 
     // footer
-    ctx.fillStyle = "#5d6e62";
+    ctx.fillStyle = C.muted;
     ctx.font = "400 15px 'Noto Sans Thai', sans-serif";
     ctx.fillText("ceremonial.vercel.app", W/2, H-50);
 
@@ -407,23 +441,32 @@
 
   document.getElementById("copyImg").addEventListener("click", function(){
     var btn = this;
-    var orig = btn.textContent;
-    var canvas = renderCanvas();
-    canvas.toBlob(function(blob){
-      if(!blob){ btn.textContent = "✗ ไม่สำเร็จ"; setTimeout(function(){btn.textContent=orig;},1400); return; }
-      if(navigator.clipboard && window.ClipboardItem){
-        navigator.clipboard.write([new ClipboardItem({"image/png": blob})]).then(function(){
-          btn.textContent = "✓ คัดลอกภาพแล้ว";
-          setTimeout(function(){ btn.textContent = orig; }, 1400);
-        }).catch(function(){
+    var orig = btn.getAttribute("data-orig") || btn.textContent;
+    btn.setAttribute("data-orig", orig);
+    function render(){
+      var canvas = renderCanvas();
+      canvas.toBlob(function(blob){
+        if(!blob){ btn.textContent = "✗ ไม่สำเร็จ"; setTimeout(function(){btn.textContent=orig;},1400); return; }
+        if(navigator.clipboard && window.ClipboardItem){
+          navigator.clipboard.write([new ClipboardItem({"image/png": blob})]).then(function(){
+            btn.textContent = "✓ คัดลอกภาพแล้ว";
+            setTimeout(function(){ btn.textContent = orig; }, 1400);
+          }).catch(function(){
+            downloadBlob(blob); btn.textContent = "✓ บันทึกภาพแล้ว";
+            setTimeout(function(){ btn.textContent = orig; }, 1400);
+          });
+        } else {
           downloadBlob(blob); btn.textContent = "✓ บันทึกภาพแล้ว";
           setTimeout(function(){ btn.textContent = orig; }, 1400);
-        });
-      } else {
-        downloadBlob(blob); btn.textContent = "✓ บันทึกภาพแล้ว";
-        setTimeout(function(){ btn.textContent = orig; }, 1400);
-      }
-    }, "image/png");
+        }
+      }, "image/png");
+    }
+    // Render in Noto Sans Thai: wait for the webfont so the card isn't a fallback.
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(render, render);
+    } else {
+      render();
+    }
   });
 
   function downloadBlob(blob){

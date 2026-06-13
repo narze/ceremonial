@@ -1,0 +1,12 @@
+# Agent / skill tooling installed per-machine, not project source
+.agents/
+.gemini/
+.opencode/
+.claude/skills/
+.cursor/skills/
+
+# Impeccable live-mode local session state (the design system docs are tracked)
+.impeccable/live/sessions/
+
+# OS cruft
+.DS_Store
